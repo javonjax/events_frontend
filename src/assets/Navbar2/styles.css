@@ -1,0 +1,45 @@
+p {
+    color: white;
+}
+
+.container {
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.links {
+    display: flex;
+    align-items: center;
+}
+
+.links a {
+    padding: 12px;
+    color: white;
+}
+
+.links a:hover {
+    background-color: grey;
+    color: white;
+}
+
+.links a.active {
+    background-color: grey;
+    color: orange;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+}
+
+.search input{
+    margin: 2px 4px;
+}
+
+.links p {
+    margin: 0;
+    padding: 8px;
+}

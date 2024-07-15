@@ -1,0 +1,14 @@
+.app-header p {
+    text-align: center;
+    font-size: 40px;
+    margin: 0;
+    padding: 0;
+}
+
+.app-header img {
+    box-sizing: border-box;
+    padding: 24px;
+    height: 400px;
+    width: 500px;
+}
+

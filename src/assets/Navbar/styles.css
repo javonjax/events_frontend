@@ -1,0 +1,34 @@
+.topnav-search input {
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.topnav {
+    background-color: black;
+    overflow: hidden;
+}
+
+.topnav-links a {
+    float: left;
+    color: white;
+    text-align: center;
+    padding: 14px;
+}
+
+.topnav-links a:hover {
+    background-color: grey;
+}
+
+.topnav-links a.active {
+    background-color: grey;
+    color: orange;
+}
+ 
+.topnav-search {
+    float: right;
+    padding: 12px;
+}
+
+.topnav-search-button {
+    width: 40px;
+}
