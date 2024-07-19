@@ -1,6 +1,6 @@
 import Navbar from "./Navbar";
-import Header from './Header';
-import './assets/App/styles.css';
+import Home from './Home';
+import '../assets/App/styles.css';
 
 
 const App = () => {
@@ -8,7 +8,7 @@ const App = () => {
   return (
     <>
       <Navbar/>
-      <Header/>
+      <Home/>
     </>
   );
 };

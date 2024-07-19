@@ -1,8 +1,8 @@
-import './assets/Navbar/styles.css';
+import '../assets/Navbar/styles.css';
 import { useState } from 'react';
 
 const Navbar = () => {
-    const navLinks = ['Home', 'Music', 'Comedy', 'Food & Drink'];
+    const navLinks = ['Music', 'Sports','Food', 'Comedy'];
 
     const [activeLink, setActiveLink] = useState('Home');
 
@@ -14,8 +14,12 @@ const Navbar = () => {
     return(
         <>
         <div className='container'>
+            <a className='home-nav'>DoStuff.com</a>
+            <div className='search'>
+                <input type="text" placeholder="Search..."></input>
+                <input type="submit" value="Search"></input>
+            </div>
             <div className='links'>
-                <p>DoStuff.com</p>
                 {navLinks.map(link => (
                     <a  
                         key={link}
@@ -26,10 +30,6 @@ const Navbar = () => {
                     </a>
                     ))}
             </div>  
-            <div className='search'>
-                <input type="text" placeholder="Search..."></input>
-                <input type="submit" value="Go"></input>
-            </div>
         </div>
         </>
     );
