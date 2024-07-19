@@ -52,16 +52,26 @@
 }
 
 .homepage-card {
-    border: 1px solid black;
+    position: relative;
+    border-radius: 1rem;
     width: 25%;
     height: 250px;
     margin: 2rem;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 0px 55px, rgba(0, 0, 0, 0.12) 0px -4px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    cursor: pointer;
 }
 
 .homepage-card img {
     width: 100%;
     height: 100%;
+    border-radius: 1rem;
+}
+
+.homepage-card p {
+    color: white;
+    position: absolute;
+    bottom: 0.25rem;
+    right: 1rem;
 }
 
 @media screen and (max-width: 1080px) {

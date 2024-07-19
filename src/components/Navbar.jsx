@@ -1,11 +1,12 @@
 import '../assets/Navbar/styles.css';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
-    const navLinks = ['Music', 'Sports','Food', 'Comedy'];
+    // const navLinks = ['Music', 'Sports','Food', 'Comedy'];
+    const navLinks = ['Music', 'Sports', 'Food', 'Family', 'Comedy', 'Theatre'];
 
     const [activeLink, setActiveLink] = useState('Home');
-
 
     const handleNavClick = (link) => {
         setActiveLink(link);
@@ -14,21 +15,24 @@ const Navbar = () => {
     return(
         <>
         <div className='container'>
-            <a className='home-nav'>DoStuff.com</a>
+            <Link to='/' className='home-nav' onClick={() => handleNavClick('Home')}>
+                DoStuff.com
+            </Link>
             <div className='search'>
                 <input type="text" placeholder="Search..."></input>
                 <input type="submit" value="Search"></input>
             </div>
             <div className='links'>
-                {navLinks.map(link => (
-                    <a  
+                {navLinks.map(link => 
+                    <Link
+                        to={`/${link.toLowerCase()}`}  
                         key={link}
                         className={activeLink === link ? 'active' : ''} 
                         onClick={() => handleNavClick(link)}
                     >
                     {link}
-                    </a>
-                    ))}
+                    </Link>
+                )}
             </div>  
         </div>
         </>

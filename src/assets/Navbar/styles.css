@@ -1,3 +1,7 @@
+a {
+    text-decoration: none;
+}
+
 .home-nav {
     color: white;
     padding: 1rem;
@@ -39,13 +43,6 @@
     margin-left: 10rem;
 }
 
-/* Hide search bar when the screen is smaller.*/
-@media screen and (max-width: 1080px){
-    .search {
-        display: none;
-    }
-}
-
 .search input {
     margin: 2px 4px;
     cursor: pointer;
@@ -60,4 +57,22 @@
 .links p {
     margin: 0;
     padding: 8px;
+}
+
+/* Hide search bar when the screen is smaller.*/
+@media screen and (max-width: 1440px){
+    .search {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .container a:nth-of-type(6) {
+        display: none;
+    }
+
+    .container a:nth-of-type(5) {
+        display: none;
+    }
+    
 }
