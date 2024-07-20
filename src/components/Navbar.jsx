@@ -1,10 +1,9 @@
 import '../assets/Navbar/styles.css';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
-    // const navLinks = ['Music', 'Sports','Food', 'Comedy'];
-    const navLinks = ['Music', 'Sports', 'Food', 'Family', 'Comedy', 'Theatre'];
+    const navLinks = ['Music', 'Sports', 'Food', 'Family', 'Theater'];
 
     const [activeLink, setActiveLink] = useState('Home');
 
@@ -15,23 +14,23 @@ const Navbar = () => {
     return(
         <>
         <div className='container'>
-            <Link to='/' className='home-nav' onClick={() => handleNavClick('Home')}>
+            <NavLink to='/' className='home-nav' onClick={() => handleNavClick('Home')}>
                 DoStuff.com
-            </Link>
+            </NavLink>
             <div className='search'>
                 <input type="text" placeholder="Search..."></input>
                 <input type="submit" value="Search"></input>
             </div>
             <div className='links'>
                 {navLinks.map(link => 
-                    <Link
+                    <NavLink
                         to={`/${link.toLowerCase()}`}  
                         key={link}
-                        className={activeLink === link ? 'active' : ''} 
+                        className={activeLink === link ? 'active' : ''}
                         onClick={() => handleNavClick(link)}
                     >
                     {link}
-                    </Link>
+                    </NavLink>
                 )}
             </div>  
         </div>

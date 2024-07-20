@@ -40,7 +40,7 @@ a {
 .search {
     display: flex;
     align-items: center;
-    margin-left: 10rem;
+    margin-left: 17rem;
 }
 
 .search input {
@@ -51,7 +51,7 @@ a {
 
 .search input:nth-of-type(1) {
     cursor: text;
-    width: 250px;
+    width: 350px;
 }
 
 .links p {
