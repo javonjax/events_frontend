@@ -1,11 +1,17 @@
 import '../assets/Navbar/styles.css';
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
     const navLinks = ['Music', 'Sports', 'Food', 'Family', 'Theater'];
-
+    const location = useLocation();
     const [activeLink, setActiveLink] = useState('Home');
+
+    // Sets active style for the current location on the navbar.
+    useEffect(() => {
+        const currentPath = location.key;
+        setActiveLink(currentPath);
+    }, [location]);
 
     const handleNavClick = (link) => {
         setActiveLink(link);
@@ -13,25 +19,36 @@ const Navbar = () => {
 
     return(
         <>
-        <div className='container'>
-            <NavLink to='/' className='home-nav' onClick={() => handleNavClick('Home')}>
+        <div className='navbar-container'>
+
+            <NavLink 
+                to='/' 
+                className='navbar-home' 
+                onClick={() => handleNavClick('Home')}>
+
                 DoStuff.com
+
             </NavLink>
-            <div className='search'>
+
+            <div className='navbar-search'>
                 <input type="text" placeholder="Search..."></input>
                 <input type="submit" value="Search"></input>
             </div>
-            <div className='links'>
+
+            <div className='navbar-links'>
+
                 {navLinks.map(link => 
                     <NavLink
                         to={`/${link.toLowerCase()}`}  
                         key={link}
                         className={activeLink === link ? 'active' : ''}
-                        onClick={() => handleNavClick(link)}
-                    >
+                        onClick={() => handleNavClick(link)}>
+
                     {link}
+
                     </NavLink>
                 )}
+
             </div>  
         </div>
         </>

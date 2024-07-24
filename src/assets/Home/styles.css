@@ -67,7 +67,7 @@
     border-radius: 1rem;
 }
 
-.homepage-card p {
+.homepage-card h2 {
     color: white;
     position: absolute;
     bottom: 0.25rem;
