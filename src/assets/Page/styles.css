@@ -1,0 +1,24 @@
+.category-header {
+    width: 100%;
+    position: relative;
+}
+
+.category-header img {
+    height: 200px;
+    width: 100%;
+}
+
+.category-navlinks {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    color: white;
+}
+
+.category-navlinks a {
+    color: white;
+}
+
+.category-filters {
+    width: 100%;
+}

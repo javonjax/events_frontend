@@ -16,7 +16,12 @@ const Home = () => {
                     <img src='/images/sports.jpg'></img>
                     <img src='/images/bar.jpg'></img>
                     <img src='/images/theater.jpg'></img>
-                    <a className='media-overlay-button'>Find local events.</a>
+                    <Link 
+                        to={'/local'}
+                        className='media-overlay-button'
+                    >
+                        Find local events.
+                    </Link>
                 </div>
             </div>
 
