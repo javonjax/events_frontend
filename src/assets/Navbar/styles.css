@@ -2,76 +2,76 @@ a {
     text-decoration: none;
 }
 
-.home-nav {
+.navbar-home {
     color: white;
     padding: 1rem;
     margin: 0;
     cursor: pointer;
 }
 
-.container {
+.navbar-container {
     background-color: black;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.links {
+.navbar-links {
     display: flex;
     align-items: center;
 }
 
-.links a {
+.navbar-links a {
     padding: 1rem;
     color: white;
     cursor: pointer;
 }
 
-.links a:hover {
+.navbar-links a:hover {
     background-color: grey;
     color: white;
 }
 
-.links a.active {
+.navbar-links a.active {
     background-color: grey;
     color: orange;
 }
 
-.search {
+.navbar-search {
     display: flex;
     align-items: center;
     margin-left: 17rem;
 }
 
-.search input {
+.navbar-search input {
     margin: 2px 4px;
     cursor: pointer;
     width: 100px;
 }
 
-.search input:nth-of-type(1) {
+.navbar-search input:nth-of-type(1) {
     cursor: text;
     width: 350px;
 }
 
-.links p {
+.navbar-links p {
     margin: 0;
     padding: 8px;
 }
 
 /* Hide search bar when the screen is smaller.*/
 @media screen and (max-width: 1440px){
-    .search {
+    .navbar-search {
         display: none;
     }
 }
 
 @media screen and (max-width: 720px) {
-    .container a:nth-of-type(6) {
+    .navbar-container a:nth-of-type(6) {
         display: none;
     }
 
-    .container a:nth-of-type(5) {
+    .navbar-container a:nth-of-type(5) {
         display: none;
     }
     
