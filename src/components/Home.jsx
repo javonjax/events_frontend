@@ -20,9 +20,7 @@ const Home = () => {
                     <img src='/images/bar.jpg'></img>
                     <img src='/images/theater.jpg'></img>
 
-                    <Link 
-                        className='media-overlay-button'
-                        to={'/local'}>
+                    <Link className='media-overlay-button' to={'/local'}>
 
                         Find local events.
 

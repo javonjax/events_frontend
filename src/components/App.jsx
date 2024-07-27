@@ -8,23 +8,27 @@ import '../assets/App/styles.css';
 
 
 const App = () => {
+  const routes = ['Popular', 'Local','Music', 'Sports', 'Food', 'Family', 'Theater'];
 
   return (
     <>
     <Router>
-      <Navbar/>
-      <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/music" element={<Page/>} />
-        <Route path="/sports" element={<Page/>} />
-        <Route path="/food" element={<Page/>} />
-        <Route path="/family" element={<Page/>} />
-        <Route path="/theater" element={<Page/>} />
-        <Route path="/local" element={<Page/>} />
-        <Route path="/popular" element={<Page/>} />
-        <Route path='*'element={<NotFound />}/>
-      </Routes>
-      <Footer/>
+      <div className='test'>
+        <Navbar/>
+        <div className='test2'>
+          <Routes>
+            <Route path="/" element={<Home/>} />
+            {routes.map(route => 
+              <Route 
+                  key={route}
+                  path={`/${route}`}
+                  element={<Page route={route}/>}/>
+            )}
+            <Route path='*'element={<NotFound />}/>
+          </Routes>
+        </div>
+        <Footer/>
+      </div>
     </Router>
     </>
   );

@@ -20,5 +20,20 @@
 }
 
 .category-filters {
+    display: flex;
+    box-sizing: border-box;
     width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.category-content {
+    display: flex;
+    justify-content: center;
+}
+.event-card {
+    border: 2px solid black;
+    width: 70%;
+    padding: 1rem;
 }
