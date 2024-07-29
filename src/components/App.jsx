@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './Navbar';
+import ScrollToTop from './ScrollToTop';
 import Home from './Home';
 import Page from './Page';
 import Footer from './Footer';
@@ -8,11 +9,12 @@ import '../assets/App/styles.css';
 
 
 const App = () => {
-  const routes = ['Popular', 'Local','Music', 'Sports', 'Food', 'Family', 'Theater'];
+  const routes = ['Popular', 'Local', 'Music', 'Sports', 'Food', 'Family', 'Theater'];
 
   return (
     <>
     <Router>
+      <ScrollToTop/>
       <div className='test'>
         <Navbar/>
         <div className='test2'>

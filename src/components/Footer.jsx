@@ -6,7 +6,7 @@ const Footer = () => {
             <h2>DoStuff</h2>
             <p>By Javon Jackson</p>
         </div>
-    )
+    );
 };
 
 export default Footer;

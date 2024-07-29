@@ -1,7 +1,9 @@
 import '../assets/Page/styles.css';
+import Event from './Event';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
+// TODO: Rename this component.
 const Page = ({ route }) => {
 
     return(
@@ -9,8 +11,7 @@ const Page = ({ route }) => {
         <div className="category-header">
             <img src='../../images/bar.jpg'></img>
             <div className='category-navlinks'>
-                <Link
-                    to={'/'}>
+                <Link to={'/'}>
 
                     Home
 
@@ -18,10 +19,9 @@ const Page = ({ route }) => {
 
                 <span> / </span>
 
-                <Link
-                    to={`/${route}`}>
+                <Link to={`/${route}`}>
 
-                    {route.charAt(0) + route.slice(1)}
+                    {route}
 
                 </Link>
             </div>
@@ -43,12 +43,72 @@ const Page = ({ route }) => {
         </div>
 
         <div className='category-content'>
-            <div className='event-card'>
-                hi
-            </div>
+            <Event
+                name='Dance party'
+                date='July 19'
+                weekday='Mon'
+                time='12:00 PM'
+                loc='Tampa, FL'>
+            </Event>
+
+            <Event
+                name='Moon landing'
+                date='August 1'
+                weekday='Wed'
+                time='3:00 PM'
+                loc='Jupiter, FL'>
+            </Event>
+
+            <Event
+                name='Moon landing'
+                date='August 1'
+                weekday='Wed'
+                time='3:00 PM'
+                loc='Jupiter, FL'>
+            </Event>
+
+            <Event
+                name='Moon landing'
+                date='August 1'
+                weekday='Wed'
+                time='3:00 PM'
+                loc='Jupiter, FL'>
+            </Event>
+
+            <Event
+                name='Moon landing'
+                date='August 1'
+                weekday='Wed'
+                time='3:00 PM'
+                loc='Jupiter, FL'>
+            </Event>
+
+            <Event
+                name='Moon landing'
+                date='August 1'
+                weekday='Wed'
+                time='3:00 PM'
+                loc='Jupiter, FL'>
+            </Event>
+
+            <Event
+                name='Moon landing'
+                date='August 1'
+                weekday='Wed'
+                time='3:00 PM'
+                loc='Jupiter, FL'>
+            </Event>
+
+            <Event
+                name='Moon landing'
+                date='August 1'
+                weekday='Wed'
+                time='3:00 PM'
+                loc='Jupiter, FL'>
+            </Event>
         </div>
         </>
-    )
-}
+    );
+};
 
 export default Page;
