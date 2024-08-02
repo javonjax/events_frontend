@@ -15,9 +15,9 @@ const App = () => {
     <>
     <Router>
       <ScrollToTop/>
-      <div className='test'>
+      <div className='app'>
         <Navbar/>
-        <div className='test2'>
+        <div className='app-body-content'>
           <Routes>
             <Route path="/" element={<Home/>} />
             {routes.map(route => 

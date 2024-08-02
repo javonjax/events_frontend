@@ -1,10 +1,63 @@
 import '../assets/Page/styles.css';
 import Event from './Event';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 // TODO: Rename this component.
 const Page = ({ route }) => {
+    // Ticketmaster API classification names that return more accurate results than keyword searches.
+    const classifications = ['music', 'sports', 'food', 'family', 'arts&theater'];
+
+    // Use the events API if there is a valid classification name.
+    const BACKEND_EVENTS_API_URL = 'http://localhost:3000/api/events/';
+
+    // Use the suggest API to find suggestions based on keywords, location, etc.
+    const BACKEND_SEARCH_API_URL = 'http://localhost:3000/api/suggest/';
+
+    const [data, setData] = useState([]);
+    
+    useEffect(() => {
+
+        const fetchData = async () => {
+            // Reset data upon visiting a new category.
+            setData([]);
+
+            try {
+                // Check if there is an API classification name for the current route.
+                const classificationName = classifications.find(item => item.includes(route.toLowerCase()));
+
+                // Only retrieve events that have not already occurred.
+                const today = new Date().toJSON();
+                
+                // Removes the decimal so the datestring can be passed to the API.
+                 const dateString = today.slice(0, -5) + 'Z';
+                 
+                // Query params are manually constructed here to avoid issues with automatic encoding.
+                const queryParams = classificationName
+                                    ? `classificationName=${classificationName}&sort=date,name,asc&startDateTime=${dateString}`
+                                    : `keyword=${route}&sort=date,name,asc&startDateTime=${dateString}`;
+
+                const res = await fetch(`${BACKEND_EVENTS_API_URL}?${queryParams}`);
+
+                if(!res.ok){
+                    throw new Error(`${res.status}: ${res.statusText}`);
+                }
+
+                const eventData = await res.json();
+                console.log(eventData);
+                setData(data => [...data, ...eventData]);
+                console.log(data);
+            }
+            catch(error) {
+                console.log('Error fetching data from backend API:\n', error);
+            }
+        };
+
+        fetchData();
+
+    }, [route]);
+
+    
 
     return(
         <>
@@ -43,69 +96,21 @@ const Page = ({ route }) => {
         </div>
 
         <div className='category-content'>
-            <Event
-                name='Dance party'
-                date='July 19'
-                weekday='Mon'
-                time='12:00 PM'
-                loc='Tampa, FL'>
-            </Event>
-
-            <Event
-                name='Moon landing'
-                date='August 1'
-                weekday='Wed'
-                time='3:00 PM'
-                loc='Jupiter, FL'>
-            </Event>
-
-            <Event
-                name='Moon landing'
-                date='August 1'
-                weekday='Wed'
-                time='3:00 PM'
-                loc='Jupiter, FL'>
-            </Event>
-
-            <Event
-                name='Moon landing'
-                date='August 1'
-                weekday='Wed'
-                time='3:00 PM'
-                loc='Jupiter, FL'>
-            </Event>
-
-            <Event
-                name='Moon landing'
-                date='August 1'
-                weekday='Wed'
-                time='3:00 PM'
-                loc='Jupiter, FL'>
-            </Event>
-
-            <Event
-                name='Moon landing'
-                date='August 1'
-                weekday='Wed'
-                time='3:00 PM'
-                loc='Jupiter, FL'>
-            </Event>
-
-            <Event
-                name='Moon landing'
-                date='August 1'
-                weekday='Wed'
-                time='3:00 PM'
-                loc='Jupiter, FL'>
-            </Event>
-
-            <Event
-                name='Moon landing'
-                date='August 1'
-                weekday='Wed'
-                time='3:00 PM'
-                loc='Jupiter, FL'>
-            </Event>
+            {data.map((event, index) => {
+                const [dayOfWeek, monthDay] = event.date.split(',');
+                console.log(event.date);
+                return (
+                <Event
+                    key={index}
+                    name={event.name}
+                    date={monthDay.trim()}
+                    weekday={dayOfWeek.trim()}
+                    time={event.time}
+                    loc={event.location}
+                    ></Event>
+                )
+                
+            })}
         </div>
         </>
     );

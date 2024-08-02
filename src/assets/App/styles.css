@@ -4,11 +4,11 @@ html, body {
     font-family: "Roboto Mono", monospace;
 }
 
-.test2 {
+.app-body-content {
     flex-grow: 1;
 }
 
-.test {
+.app {
     display: flex;
     flex-direction: column;
     min-height: 100vh;

@@ -17,6 +17,9 @@ const Event = ({name, date, weekday, time, loc}) => {
                         {loc}
                     </div>
                 </div>
+                <div className='event-detail-nav'>
+                    Info {`>`}
+                </div>
             </div>
     );
 };

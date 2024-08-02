@@ -10,10 +10,19 @@
 
 .event-date {
     margin: 1rem;
+    width: 5%;
 }
 
 .event-info {
     display: flex;
     flex-direction: column;
     margin: 1rem;
+    flex-grow: 1;
+}
+
+.event-detail-nav {
+    margin-right: 1rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 2px solid black;
 }
