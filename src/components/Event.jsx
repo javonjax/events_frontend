@@ -1,25 +1,36 @@
 import '../assets/Event/styles.css';
+import { Link } from 'react-router-dom';
 
-const Event = ({name, date, weekday, time, loc}) => {
+const Event = ({ event, route }) => {
+    const [dayOfWeek, monthDay] = event.date.split(',');
+
     return(
         <div className='event-card'>
                 <div className='event-date'>
-                        {date}
+                        {monthDay.trim()}
                 </div>
-                <div className='event-info'>
+
+                <div className='event-details'>
                     <div className='event-time'>
-                        {weekday} - {time}
+                        {dayOfWeek.trim()} - {event.time}
                     </div>
+
                     <div className='event-name'>
-                        {name}
+                        {event.name}
                     </div>
+
                     <div className='event-location'>
-                        {loc}
+                        {event.location}
                     </div>
                 </div>
-                <div className='event-detail-nav'>
+                
+                <Link 
+                    className='event-info-nav'
+                    to={`/${route}/${event.id}`}>
+                        
                     Info {`>`}
-                </div>
+
+                </Link>
             </div>
     );
 };

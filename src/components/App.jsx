@@ -3,6 +3,7 @@ import Navbar from './Navbar';
 import ScrollToTop from './ScrollToTop';
 import Home from './Home';
 import Page from './Page';
+import EventInfo from './EventInfo';
 import Footer from './Footer';
 import NotFound from './NotFound';
 import '../assets/App/styles.css';
@@ -24,7 +25,13 @@ const App = () => {
               <Route 
                   key={route}
                   path={`/${route}`}
-                  element={<Page route={route}/>}/>
+                  element={<Page route={route}/>} />
+            )}
+            {routes.map(route => 
+              <Route 
+                  key={`${route}-info`}
+                  path={`/${route}/:id`}
+                  element={<EventInfo />} />
             )}
             <Route path='*'element={<NotFound />}/>
           </Routes>

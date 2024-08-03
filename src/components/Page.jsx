@@ -16,6 +16,7 @@ const Page = ({ route }) => {
 
     const [data, setData] = useState([]);
     
+    // TODO: cache data?
     useEffect(() => {
 
         const fetchData = async () => {
@@ -28,7 +29,7 @@ const Page = ({ route }) => {
 
                 // Only retrieve events that have not already occurred.
                 const today = new Date().toJSON();
-                
+
                 // Removes the decimal so the datestring can be passed to the API.
                  const dateString = today.slice(0, -5) + 'Z';
                  
@@ -37,6 +38,7 @@ const Page = ({ route }) => {
                                     ? `classificationName=${classificationName}&sort=date,name,asc&startDateTime=${dateString}`
                                     : `keyword=${route}&sort=date,name,asc&startDateTime=${dateString}`;
 
+
                 const res = await fetch(`${BACKEND_EVENTS_API_URL}?${queryParams}`);
 
                 if(!res.ok){
@@ -44,9 +46,8 @@ const Page = ({ route }) => {
                 }
 
                 const eventData = await res.json();
-                console.log(eventData);
+
                 setData(data => [...data, ...eventData]);
-                console.log(data);
             }
             catch(error) {
                 console.log('Error fetching data from backend API:\n', error);
@@ -97,18 +98,13 @@ const Page = ({ route }) => {
 
         <div className='category-content'>
             {data.map((event, index) => {
-                const [dayOfWeek, monthDay] = event.date.split(',');
-                console.log(event.date);
+                
                 return (
-                <Event
-                    key={index}
-                    name={event.name}
-                    date={monthDay.trim()}
-                    weekday={dayOfWeek.trim()}
-                    time={event.time}
-                    loc={event.location}
-                    ></Event>
-                )
+                    <Event
+                        key={index}
+                        event={event}
+                        route={route} />
+                );
                 
             })}
         </div>
