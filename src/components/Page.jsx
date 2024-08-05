@@ -15,14 +15,22 @@ const Page = ({ route }) => {
     const BACKEND_SEARCH_API_URL = 'http://localhost:3000/api/suggest/';
 
     const [data, setData] = useState([]);
+
+    const getEventsData = (category) => {
+        const eventData = data.find(item => item[0] === route.toLowerCase());
+        console.log(eventData);
+
+        return eventData ? eventData[1]
+                         : [];
+    }
     
-    // TODO: cache data?
     useEffect(() => {
 
+        /*
+            Fetch data for events from the backend API.
+            Data is fetched based on a classification name or a keyword search.
+        */
         const fetchData = async () => {
-            // Reset data upon visiting a new category.
-            setData([]);
-
             try {
                 // Check if there is an API classification name for the current route.
                 const classificationName = classifications.find(item => item.includes(route.toLowerCase()));
@@ -47,18 +55,25 @@ const Page = ({ route }) => {
 
                 const eventData = await res.json();
 
-                setData(data => [...data, ...eventData]);
+                const newData = [`${route.toLowerCase()}`, eventData];
+
+                setData(data => [...data, newData]);
+                console.log(data);
             }
             catch(error) {
                 console.log('Error fetching data from backend API:\n', error);
             }
         };
 
-        fetchData();
+        if (!data.find(item => item[0] === route.toLowerCase())) {
+            fetchData();
+        }
+    
 
     }, [route]);
 
-    
+    const events = getEventsData(`${route.toLowerCase()}`);
+    console.log(events);
 
     return(
         <>
@@ -97,7 +112,7 @@ const Page = ({ route }) => {
         </div>
 
         <div className='category-content'>
-            {data.map((event, index) => {
+            {events.map((event, index) => {
                 
                 return (
                     <Event

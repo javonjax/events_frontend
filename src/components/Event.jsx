@@ -26,7 +26,7 @@ const Event = ({ event, route }) => {
                 
                 <Link 
                     className='event-info-nav'
-                    to={`/${route}/${event.id}`}>
+                    to={`/${route.toLowerCase()}/${event.id}`}>
                         
                     Info {`>`}
 
