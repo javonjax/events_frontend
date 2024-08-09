@@ -7,31 +7,29 @@ const Event = ({ event, route }) => {
     return(
         <div className='event-card'>
                 <div className='event-date'>
-                        {monthDay.trim()}
+                        <h2>{ monthDay.trim() } </h2>
                 </div>
 
                 <div className='event-details'>
                     <div className='event-time'>
-                        {dayOfWeek.trim()} - {event.time}
+                        { dayOfWeek.trim() } - { event.time }
                     </div>
 
                     <div className='event-name'>
-                        {event.name}
+                        { event.name }
                     </div>
 
                     <div className='event-location'>
-                        {event.location}
+                        { event.location }
                     </div>
                 </div>
                 
                 <Link 
                     className='event-info-nav'
                     to={`/${route.toLowerCase()}/${event.id}`}>
-                        
-                    Info {`>`}
-
+                    Info
                 </Link>
-            </div>
+        </div>
     );
 };
 

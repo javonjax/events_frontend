@@ -30,32 +30,61 @@ const EventInfo = () => {
             }
         };
         fetchData();
-    }, [])
+    }, []);
 
     return(
         <div className="event-info">
+
             <div className="event-info-header">
                 <div className="header-text">
-                    <h1 className="event-name"> 
+                    <h1> 
                         { event.name } 
                     </h1>
-                    <h2>{ event.venue } - { event.location }</h2>
-                    <h2 className="event-pricing">
-                        { event.priceMin === event.priceMax ? event.priceMin
-                                                            : event.priceMin + ' - ' + event.priceMax } 
-                    </h2>
-                    <p className="event-description-text">
-                        { event.info }
-                    </p>
-                </div>
 
+                    {/* Conditionally render header elements. */}
+
+                    { event.location ? <h2>{ event.location }</h2> 
+                                     : null
+                    }
+
+                    { event.date && event.time ? <h2>{ event.date } - { event.time }</h2>
+                                               : event.date ? <h2>{ event.date }</h2>
+                                                            : event.time ? <h2>{ event.time }</h2>
+                                                                         : null
+                    }
+
+                    { event.priceMin && event.priceMax ? event.priceMin === event.priceMax ? <h2>{ event.priceMin }</h2>
+                                                                                           : <h2>{ event.priceMin} - { event.priceMax }</h2>
+                                                       : event.priceMin ? <h2>{ event.priceMin }</h2>
+                                                                        : event.priceMax ? <h2>{ event.priceMax }</h2>
+                                                                                         : null
+                    }
+
+                </div>
                 <div className="header-img">
                     <img src={ event.image }></img>
                 </div>
             </div>
+            
+            <div className="event-info-body">
+                { event.seatmap ? <div className="seatmap">
+                                        <h2>{ event.venue }</h2> 
+                                        <img src={ event.seatmap } alt='Venue Seatmap'></img>
+                                  </div>
+                                : null
+                }
 
-            <div className="seatmap-img">
-                <img src={ event.seatmap }></img>
+                <div className="event-sales-content">
+                    { event.info ? <p className="event-description-text">
+                                        { event.info }
+                                   </p>
+                                : null
+                    }
+
+                    { event.url ? <a className='event-ticket-link' href={ event.url }>Get tickets</a>
+                                : null
+                    }
+                </div>
             </div>
         </div>
     );

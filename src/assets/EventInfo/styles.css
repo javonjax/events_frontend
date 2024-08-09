@@ -33,6 +33,63 @@
     margin: 2rem;
 }
 
-.seatmap-img {
-    margin: 2rem;
+.event-info-body {
+    display: flex;
+}
+
+.seatmap {
+    margin: 1rem;
+    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.seatmap img {
+    /* Seatmap images are svg so this technique is ok. */
+    max-width: 80%;
+    height: auto;
+}
+
+.event-sales-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem;
+    max-width: 50%;
+    flex-grow: 1;
+}
+
+.event-description-text {
+    max-width: 50%;
+    padding: 1rem;
+}
+
+.event-ticket-link {
+    border: 2px solid black;
+    background-color: black;
+    color: white;
+    border-radius: 1rem;
+    text-transform: uppercase;
+    padding: 2rem;
+}
+
+@media screen and (max-width: 720px) {
+    .event-info-header {
+        flex-direction: column;
+    }  
+}
+
+@media screen and (max-width: 1440px) {
+    .event-info-body {
+        flex-direction: column;
+    }
+
+    .seatmap {
+        max-width: 100%;
+    }
+    
+    .event-sales-content {
+        max-width: 100%;
+    }
 }

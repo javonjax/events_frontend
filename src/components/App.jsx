@@ -6,6 +6,7 @@ import Page from './Page';
 import EventInfo from './EventInfo';
 import Footer from './Footer';
 import NotFound from './NotFound';
+import { LocationProvider } from './LocationContext';
 import '../assets/App/styles.css';
 
 
@@ -16,6 +17,7 @@ const App = () => {
     <>
     <Router>
       <ScrollToTop/>
+      <LocationProvider>
       <div className='app'>
         <Navbar/>
         <div className='app-body-content'>
@@ -38,6 +40,7 @@ const App = () => {
         </div>
         <Footer/>
       </div>
+      </LocationProvider>
     </Router>
     </>
   );

@@ -1,9 +1,22 @@
 import '../assets/Home/styles.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { LocationContext } from './LocationContext';
+import { useContext } from 'react';
 
 const Home = () => {
+    const { location, error, requestLocation, loading } = useContext(LocationContext);
+    const navigate = useNavigate();
+
     const categories = ['Popular', 'Music', 'Sports', 'Food', 'Family', 'Theater'];
 
+    const handleClick = async (event) => {
+        event.preventDefault();
+        await requestLocation();
+
+        if(location) {
+            navigate('/local');
+        }
+    }; 
 
     return(
         <>
@@ -20,7 +33,7 @@ const Home = () => {
                     <img src='/images/bar.jpg'></img>
                     <img src='/images/theater.jpg'></img>
 
-                    <Link className='media-overlay-button' to={'/local'}>
+                    <Link className='media-overlay-button' to={'/local'} onClick={handleClick}>
 
                         Find local events.
 
