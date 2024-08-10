@@ -1,10 +1,12 @@
 import '../assets/Navbar/styles.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
     const navLinks = ['Music', 'Sports', 'Food', 'Family', 'Theater'];
     const location = useLocation();
+    const navbarLinksRef = useRef(null);
+    const hamburgerMenuRef = useRef(null);
     const [activeLink, setActiveLink] = useState('Home');
 
     // Sets active style for the current location on the navbar.
@@ -15,6 +17,22 @@ const Navbar = () => {
 
     const handleNavClick = (link) => {
         setActiveLink(link);
+    };
+
+    const handleHamburgerDisplay = () => {
+        const navLinks = navbarLinksRef.current.className;
+        const hamburgerIcon = hamburgerMenuRef.current.className;
+
+        if (navLinks === 'navbar-links') {
+            console.log('on');
+            navbarLinksRef.current.className += ' responsive';
+            hamburgerMenuRef.current.className += ' responsive';
+        } 
+        else {
+            console.log('off');
+            navbarLinksRef.current.className = 'navbar-links';
+            hamburgerMenuRef.current.className = 'navbar-hamburger-menu';
+        }
     };
 
     return(
@@ -35,20 +53,28 @@ const Navbar = () => {
                 <input type="submit" value="Search"></input>
             </div>
 
-            <div className='navbar-links'>
+            <div className='navbar-quick-nav'>
+                <button className='navbar-hamburger-menu' ref={hamburgerMenuRef} onClick={() => handleHamburgerDisplay()}>
+                    <div className='burger-bar'></div>
+                    <div className='burger-bar'></div>
+                    <div className='burger-bar'></div>
+                </button>
 
-                {navLinks.map(link => 
-                    <NavLink
-                        to={`/${link.toLowerCase()}`}  
-                        key={link}
-                        className={activeLink === link ? 'active' : ''}
-                        onClick={() => handleNavClick(link)}>
-
-                    {link}
-
-                    </NavLink>
-                )}
-
+                <div className='navbar-links' ref={navbarLinksRef}>
+                
+                    {navLinks.map(link => 
+                        <NavLink
+                            to={`/${link.toLowerCase()}`}  
+                            key={link}
+                            className={activeLink === link ? 'active' : null}
+                            onClick={() => handleNavClick(link)}>
+                
+                        {link}
+                
+                        </NavLink>
+                    )}
+                
+                </div>
             </div>  
         </div>
         </>

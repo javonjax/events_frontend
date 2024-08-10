@@ -13,7 +13,7 @@ const Home = () => {
         event.preventDefault();
         await requestLocation();
 
-        if(location) {
+        if(!loading) {
             navigate('/local');
         }
     }; 
