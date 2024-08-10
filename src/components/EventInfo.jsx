@@ -62,7 +62,9 @@ const EventInfo = () => {
 
                 </div>
                 <div className="header-img">
-                    <img src={ event.image }></img>
+                    { event.image ? <img src={ event.image }></img>
+                                  : null
+                    }
                 </div>
             </div>
             
