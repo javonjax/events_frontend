@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './Navbar';
 import ScrollToTop from './ScrollToTop';
 import Home from './Home';
-import Page from './Page';
+import CategoryLanding from './CategoryLanding';
 import EventInfo from './EventInfo';
 import Footer from './Footer';
 import NotFound from './NotFound';
@@ -11,7 +11,7 @@ import '../assets/App/styles.css';
 
 
 const App = () => {
-  const routes = ['Popular', 'Local', 'Music', 'Sports', 'Food', 'Family', 'Theater'];
+  const routes = ['Popular', 'Local', 'Music', 'Sports', 'Food', 'Family', 'Arts'];
 
   return (
     <>
@@ -27,7 +27,7 @@ const App = () => {
               <Route 
                   key={route}
                   path={`/${route}`}
-                  element={<Page route={route}/>} />
+                  element={<CategoryLanding route={route}/>} />
             )}
             {routes.map(route => 
               <Route 

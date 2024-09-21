@@ -4,17 +4,21 @@ import { LocationContext } from './LocationContext';
 import { useContext } from 'react';
 
 const Home = () => {
-    const { location, error, requestLocation, loading } = useContext(LocationContext);
+    const { location, error, requestLocation } = useContext(LocationContext);
     const navigate = useNavigate();
 
-    const categories = ['Popular', 'Music', 'Sports', 'Food', 'Family', 'Theater'];
+    const categories = ['Popular', 'Music', 'Sports', 'Food', 'Family', 'Arts'];
 
     const handleClick = async (event) => {
         event.preventDefault();
-        await requestLocation();
+        try {
+            const {latitude, longitude} = await requestLocation();
 
-        if(!loading) {
+            console.log(latitude, longitude);
             navigate('/local');
+            
+        } catch(error) {
+            console.error('Error fetching location data:', error.message);
         }
     }; 
 

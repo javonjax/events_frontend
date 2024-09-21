@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
-    const navLinks = ['Music', 'Sports', 'Food', 'Family', 'Theater'];
+    const navLinks = ['Music', 'Sports', 'Food', 'Family', 'Arts'];
     const location = useLocation();
     const navbarLinksRef = useRef(null);
     const hamburgerMenuRef = useRef(null);
