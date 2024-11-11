@@ -4,6 +4,7 @@ import ScrollToTop from '../components/ScrollToTop';
 import Home from '../components/Home';
 import CategoryLanding from '../components/CategoryLanding';
 import EventInfo from '../components/EventInfo';
+import SignInForm from '../components/SignInForm';
 import RegistrationForm from '../components/RegistrationForm';
 import Footer from '../components/Footer';
 import NotFound from '../components/NotFound';
@@ -50,6 +51,7 @@ const App = () => {
                     />
                   ))}
                   <Route path="/register" element={<RegistrationForm />} />
+                  <Route path="/signin" element={<SignInForm />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </div>

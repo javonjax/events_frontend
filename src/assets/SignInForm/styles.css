@@ -1,0 +1,111 @@
+.sign-in-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .sign-in-form-container {
+    color: white;
+    width: 400px;
+    background-color: black;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+  }
+  
+  .sign-in-form-container > header {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+  
+  .sign-in-form {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    color: white;
+  }
+  
+  .sign-in-form > label {
+    margin-bottom: 0.5rem;
+  }
+  
+  .sign-in-form > input {
+    height: 2rem;
+    border-radius: 0.5rem;
+    z-index: 1; /* Helps prevent accidentally clicking the password manager pop ups in Firefox.*/
+  }
+  
+  .sign-in-form > button {
+    font-family: 'Nunito', sans-serif;
+    padding: 0.5rem;
+    margin-top: 4px;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }
+  .sign-in-form > button:disabled {
+    cursor: default;
+  }
+  
+  .form-nav {
+    color: white;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-nav > p {
+    margin: 0;
+    margin-bottom: 0.5rem;
+  }
+  
+  .form-nav a {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+  }
+  .form-nav a:visited {
+    color: white;
+  }
+  
+  .input-requirements {
+    position: relative;
+    background-color: black;
+    border-radius: 0.5rem;
+  }
+  
+  .input-requirements > svg {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+  }
+  
+  .input-requirements > p {
+    font-size: 0.75rem;
+    margin-left: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  .tooltip {
+    display: flex;
+    align-items: flex-start;
+    font-size: 12px;
+    min-height: 0.5rem;
+    margin-left: 4px;
+    margin-top: 4px;
+    margin-bottom: 8px;
+  }
+  
+  .tooltip > p {
+    margin: 0;
+    color: red;
+  }
+  

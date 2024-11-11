@@ -102,7 +102,7 @@ const Navbar = () => {
             <FontAwesomeIcon icon={faUser} style={{ color: 'white' }} />
           </button>
           <div className="accounts-dropdown-links" ref={accountsLinksRef}>
-            <NavLink to="/login">Login</NavLink>
+            <NavLink to="/signin">Sign In</NavLink>
             <NavLink to="/register">Register</NavLink>
           </div>
         </div>

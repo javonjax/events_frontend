@@ -1,6 +1,6 @@
 import '../assets/RegistrationForm/styles.css';
 import { useForm } from 'react-hook-form';
-// import Header from './Header';
+import { NavLink } from 'react-router-dom';
 import Input from './Input';
 
 const RegistrationForm = () => {
@@ -108,9 +108,8 @@ const RegistrationForm = () => {
             Create account
           </button>
         </form>
-        <div className="already-registered">
-          <p>Already have an account?</p>
-          <a href="/">Sign in</a>
+        <div className="form-nav">
+          <p>Already have an account? <NavLink to="/signin">Sign In</NavLink></p>
         </div>
       </div>
     </div>
