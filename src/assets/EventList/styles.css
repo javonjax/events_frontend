@@ -1,0 +1,9 @@
+.category-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.events-pending {
+  text-align: center;
+}

@@ -1,95 +1,94 @@
-import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useParams } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
 import '../assets/EventInfo/styles.css';
 
+// The event info API returns information about an event based on the id passed as a param.
+const BACKEND_EVENT_INFO_API_URL = `http://localhost:3000/api/events`;
+
 const EventInfo = () => {
-    const { id } = useParams();
-    const [event, setEvent] = useState({});
+  // Id is used as a dependency for the TanStack query and is passed to the backend API.
+  const { route, id } = useParams();
 
-    // Use the event info api to find information about a specific event by providing and id.
-    const BACKEND_EVENT_INFO_API_URL = `http://localhost:3000/api/events`;
+  const fetchEvent = async () => {
+    const res = await fetch(`${BACKEND_EVENT_INFO_API_URL}/${id}`);
 
-    useEffect(() => {
-        /*
-            Fetch data for an individual event from the backend API.
-        */
-        const fetchData = async () => {
-            try{
-                const res = await fetch(`${BACKEND_EVENT_INFO_API_URL}/${id}`);
+    if (!res.ok) {
+      throw new Error(`${res.status}: ${res.statusText}`);
+    }
 
-                if(!res.ok){
-                    throw new Error(`${res.status}: ${res.statusText}`);
-                }
+    const eventData = await res.json();
 
-                const eventData = await res.json();
-                setEvent(eventData);
-                console.log(eventData);
-            }
-            catch (error) {
-                console.log('Error fetching data from backend API:\n', error);
-            }
-        };
-        fetchData();
-    }, []);
+    return eventData;
+  };
 
-    return(
-        <div className="event-info">
+  const { data, error, isLoading } = useQuery({
+    queryKey: ['fetchEvent', id],
+    queryFn: fetchEvent,
+  });
 
-            <div className="event-info-header">
-                <div className="header-text">
-                    <h1> 
-                        { event.name } 
-                    </h1>
+  if (isLoading) {
+    return <p>Loading event info...</p>;
+  }
 
-                    {/* Conditionally render header elements. */}
+  return (
+    <div className="event-info">
+      <div className="event-info-header">
+        <div className="header-text">
+          <h1>{data?.name}</h1>
 
-                    { event.location ? <h2>{ event.location }</h2> 
-                                     : null
-                    }
+          {/* Conditionally render header elements. */}
 
-                    { event.date && event.time ? <h2>{ event.date } - { event.time }</h2>
-                                               : event.date ? <h2>{ event.date }</h2>
-                                                            : event.time ? <h2>{ event.time }</h2>
-                                                                         : null
-                    }
+          {data?.location && <h2>{data?.location}</h2>}
 
-                    { event.priceMin && event.priceMax ? event.priceMin === event.priceMax ? <h2>{ event.priceMin }</h2>
-                                                                                           : <h2>{ event.priceMin} - { event.priceMax }</h2>
-                                                       : event.priceMin ? <h2>{ event.priceMin }</h2>
-                                                                        : event.priceMax ? <h2>{ event.priceMax }</h2>
-                                                                                         : null
-                    }
+          {data?.date && data?.time ? (
+            <h2>
+              {data?.date} - {data?.time}
+            </h2>
+          ) : data?.date ? (
+            <h2>{data?.date}</h2>
+          ) : data?.time ? (
+            <h2>{data?.time}</h2>
+          ) : null}
 
-                </div>
-                <div className="header-img">
-                    { event.image ? <img src={ event.image }></img>
-                                  : null
-                    }
-                </div>
-            </div>
-            
-            <div className="event-info-body">
-                { event.seatmap ? <div className="seatmap">
-                                        <h2>{ event.venue }</h2> 
-                                        <img src={ event.seatmap } alt='Venue Seatmap'></img>
-                                  </div>
-                                : null
-                }
-
-                <div className="event-sales-content">
-                    { event.info ? <p className="event-description-text">
-                                        { event.info }
-                                   </p>
-                                : null
-                    }
-
-                    { event.url ? <a className='event-ticket-link' href={ event.url }>Get tickets</a>
-                                : null
-                    }
-                </div>
-            </div>
+          {data?.priceMin && data?.priceMax ? (
+            data?.priceMin === data?.priceMax ? (
+              <h2>{data?.priceMin}</h2>
+            ) : (
+              <h2>
+                {data?.priceMin} - {data?.priceMax}
+              </h2>
+            )
+          ) : data?.priceMin ? (
+            <h2>{data?.priceMin}</h2>
+          ) : data?.priceMax ? (
+            <h2>{data?.priceMax}</h2>
+          ) : null}
         </div>
-    );
+        <div className="header-img">
+          {data?.image && <img src={data?.image}></img>}
+        </div>
+      </div>
+
+      <div className="event-info-body">
+        {data?.seatmap && (
+          <div className="seatmap">
+            <h2>{data?.venue}</h2>
+            <img src={data?.seatmap} alt="Venue Seatmap"></img>
+          </div>
+        )}
+
+        <div className="event-sales-content">
+          {data?.info && <p className="event-description-text">{data?.info}</p>}
+
+          {data?.url && (
+            <a className="event-ticket-link" href={data?.url}>
+              Get tickets
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default EventInfo;

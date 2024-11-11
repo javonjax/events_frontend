@@ -1,105 +1,114 @@
 .homepage-header {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
 }
 
 .homepage-header h1 {
-    color: black;
-    font-size: 2.5rem;
-    margin: 0;
-    padding: 1rem;
-    text-wrap: true;
+  color: black;
+  font-size: 2.5rem;
+  margin: 0;
+  padding: 1rem;
+  text-wrap: true;
 }
 
 .homepage-header img {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    width: 30%;
-    flex-grow: 1;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  width: 30%;
+  flex-grow: 1;
 }
 
 .homepage-header-media {
-    display: flex;
-    position: relative;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 85%;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 0px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 4px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 65%;
+  box-shadow:
+    rgba(0, 0, 0, 0.25) 0px 0px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px,
+    rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 4px 13px,
+    rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .media-overlay-button {
-    position: absolute;
-    background-color: bisque;
-    text-align: center;
-    padding: 0.5rem;
-    border-radius: 2rem;
-    font-size: 0.9rem;
-    bottom: 1rem;
-    right: 1rem;
-    color: black;
-    width: 200px;
-    cursor: pointer;
+  position: absolute;
+  background-color: bisque;
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 2rem;
+  font-size: 0.9rem;
+  bottom: 1rem;
+  right: 1rem;
+  color: black;
+  width: 200px;
+  cursor: pointer;
 }
 
 .homepage-body {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 .homepage-card {
-    position: relative;
-    width: 25%;
-    height: 250px;
-    margin: 2rem;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 0px 55px, rgba(0, 0, 0, 0.12) 0px -4px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-    cursor: pointer;
-    border-radius: 1rem;
+  position: relative;
+  width: 25%;
+  height: 250px;
+  margin: 2rem;
+  box-shadow:
+    rgba(0, 0, 0, 0.25) 0px 0px 55px,
+    rgba(0, 0, 0, 0.12) 0px -4px 30px,
+    rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px,
+    rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  cursor: pointer;
+  border-radius: 1rem;
 }
 
 .homepage-card img {
-    width: 100%;
-    height: 100%;
-    border-radius: 1rem;
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
 }
 
 .homepage-card h2 {
-    color: white;
-    position: absolute;
-    bottom: 0.25rem;
-    right: 1rem;
+  color: white;
+  position: absolute;
+  bottom: 0.25rem;
+  right: 1rem;
 }
 
 .homepage-card:nth-of-type(1) {
-    border: 8px solid white;
-    background-color: white;
+  border: 8px solid white;
+  background-color: white;
 }
 
 @media screen and (max-width: 1080px) {
-    .homepage-header-media {
-        width: 100%;
-    }
+  .homepage-header-media {
+    width: 85%;
+  }
 
-    .homepage-card {
-        width: 40%;
-    }
+  .homepage-card {
+    width: 40%;
+  }
 }
 
 @media screen and (max-width: 720px) {
-    .homepage-header h1 {
-        font-size: 1.5rem;
-    }
+  .homepage-header h1 {
+    font-size: 1.5rem;
+  }
 
-    .media-text-overlay {
-        font-size: 0.9rem;
-    }
+  .media-text-overlay {
+    font-size: 0.9rem;
+  }
 
-    .homepage-card {
-        width: 70%;
-    }
+  .homepage-card {
+    width: 70%;
+  }
 }
-

@@ -1,84 +1,114 @@
 import '../assets/Navbar/styles.css';
 import { useState, useEffect, useRef } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faHouse,
+  faMagnifyingGlass,
+  faUser,
+} from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = () => {
-    const navLinks = ['Music', 'Sports', 'Food', 'Family', 'Arts'];
-    const location = useLocation();
-    const navbarLinksRef = useRef(null);
-    const hamburgerMenuRef = useRef(null);
-    const [activeLink, setActiveLink] = useState('Home');
+  const navLinks = ['Home', 'Music', 'Sports', 'Food', 'Family', 'Arts'];
+  const [activeLink, setActiveLink] = useState('Home');
+  const route = useLocation();
+  const navbarLinksRef = useRef(null);
+  const hamburgerMenuRef = useRef(null);
+  const accountsDropdownRef = useRef(null);
+  const accountsLinksRef = useRef(null);
 
-    // Sets active style for the current location on the navbar.
-    useEffect(() => {
-        const currentPath = location.key;
-        setActiveLink(currentPath);
-    }, [location]);
+  // Set active style for the current location on the navbar.
+  // useEffect(() => {
+  //   const currentPath = route.key;
+  //   setActiveLink(currentPath);
+  // }, [route]);
 
-    const handleNavClick = (link) => {
-        setActiveLink(link);
-    };
+  // const handleNavClick = (link) => {
+  //   setActiveLink(link);
+  // };
 
-    const handleHamburgerDisplay = () => {
-        const navLinks = navbarLinksRef.current.className;
-        const hamburgerIcon = hamburgerMenuRef.current.className;
+  // Set styling to show the hamburger menu on smaller screens.
+  const handleHamburgerMenuDisplay = () => {
+    const navLinks = navbarLinksRef.current.className;
+    const hamburgerIcon = hamburgerMenuRef.current.className;
 
-        if (navLinks === 'navbar-links') {
-            console.log('on');
-            navbarLinksRef.current.className += ' responsive';
-            hamburgerMenuRef.current.className += ' responsive';
-        } 
-        else {
-            console.log('off');
-            navbarLinksRef.current.className = 'navbar-links';
-            hamburgerMenuRef.current.className = 'navbar-hamburger-menu';
-        }
-    };
+    // Set appropriate styling when the hamburger menu is opened and reset it when closed.
+    if (navLinks === 'navbar-links') {
+      console.log('on');
+      navbarLinksRef.current.className += ' responsive';
+      hamburgerMenuRef.current.className += ' responsive';
+    } else {
+      console.log('off');
+      navbarLinksRef.current.className = 'navbar-links';
+      hamburgerMenuRef.current.className = 'navbar-hamburger-menu';
+    }
+  };
 
-    return(
-        <>
-        <div className='navbar-container'>
+  const handleAccountDropdownDisplay = () => {
+    const accountsMenu = accountsDropdownRef.current.className;
 
-            <NavLink 
-                to='/' 
-                className='navbar-home' 
-                onClick={() => handleNavClick('Home')}>
+    // Set appropriate styling when the dropdown menu is opened and reset it when closed.
+    if (accountsMenu === 'accounts-dropdown-button') {
+      accountsDropdownRef.current.className += ' responsive';
+      accountsLinksRef.current.className += ' responsive';
+    } else {
+      accountsDropdownRef.current.className = 'accounts-dropdown-button';
+      accountsLinksRef.current.className = 'accounts-dropdown-links';
+    }
+  };
 
-                DoStuff.com
-
-            </NavLink>
-
-            <div className='navbar-search'>
-                <input type="text" placeholder="Search..."></input>
-                <input type="submit" value="Search"></input>
-            </div>
-
-            <div className='navbar-quick-nav'>
-                <button className='navbar-hamburger-menu' ref={hamburgerMenuRef} onClick={() => handleHamburgerDisplay()}>
-                    <div className='burger-bar'></div>
-                    <div className='burger-bar'></div>
-                    <div className='burger-bar'></div>
-                </button>
-
-                <div className='navbar-links' ref={navbarLinksRef}>
-                
-                    {navLinks.map(link => 
-                        <NavLink
-                            to={`/${link.toLowerCase()}`}  
-                            key={link}
-                            className={activeLink === link ? 'active' : null}
-                            onClick={() => handleNavClick(link)}>
-                
-                        {link}
-                
-                        </NavLink>
-                    )}
-                
-                </div>
-            </div>  
+  return (
+    <>
+      <div className="navbar-container">
+        <NavLink to="/" className="navbar-home">
+          <FontAwesomeIcon icon={faHouse} />
+        </NavLink>
+        <div className="navbar-quick-nav">
+          <button
+            className="navbar-hamburger-menu"
+            ref={hamburgerMenuRef}
+            onClick={() => handleHamburgerMenuDisplay()}
+          >
+            <div className="burger-bar"></div>
+            <div className="burger-bar"></div>
+            <div className="burger-bar"></div>
+          </button>
+          <div className="navbar-links" ref={navbarLinksRef}>
+            {navLinks.map((link) => {
+              let destination = link.toLowerCase();
+              if (link === 'Home') {
+                destination = '/';
+              }
+              return (
+                <NavLink to={destination} key={link}>
+                  {link}
+                </NavLink>
+              );
+            })}
+          </div>
         </div>
-        </>
-    );
+        <div className="navbar-search">
+          <input type="text" placeholder="Search..."></input>
+          <button type="submit">
+            <FontAwesomeIcon icon={faMagnifyingGlass} />
+          </button>
+        </div>
+        <div className="navbar-accounts">
+          <button
+            ref={accountsDropdownRef}
+            className="accounts-dropdown-button"
+            onClick={handleAccountDropdownDisplay}
+          >
+            <FontAwesomeIcon icon={faUser} style={{ color: 'white' }} />
+          </button>
+          <div className="accounts-dropdown-links" ref={accountsLinksRef}>
+            <NavLink to="/login">Login</NavLink>
+            <NavLink to="/register">Register</NavLink>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default Navbar;

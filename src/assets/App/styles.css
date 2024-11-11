@@ -1,15 +1,17 @@
-html, body {
-    background-color: bisque;
-    margin: 0;
-    font-family: "Roboto Mono", monospace;
+html,
+body {
+  background-color: bisque;
+  margin: 0;
+  /* font-family: 'Roboto Mono', monospace; */
+  font-family: 'Nunito', sans-serif;
 }
 
 .app-body-content {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 .app {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }

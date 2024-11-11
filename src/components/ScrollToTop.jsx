@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 /*
     This component will set the scroll position to the top of the
     page when navigating between components.
@@ -15,4 +15,3 @@ const ScrollToTop = () => {
 };
 
 export default ScrollToTop;
-
