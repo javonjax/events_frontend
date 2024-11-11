@@ -17,17 +17,26 @@ const Navbar = () => {
   const accountsDropdownRef = useRef(null);
   const accountsLinksRef = useRef(null);
 
-  // Set active style for the current location on the navbar.
-  // useEffect(() => {
-  //   const currentPath = route.key;
-  //   setActiveLink(currentPath);
-  // }, [route]);
+  // Add event listener to close dropdown menus when the navbar is mounted.
+  useEffect(() => {
+    const handleCloseDropdowns = (e) => {
+      const elem = e.target;
+      if(!elem.closest('.navbar-hamburger-menu')) {
+        if (navbarLinksRef.current) {
+          navbarLinksRef.current.className = 'navbar-links';
+        }
+        hamburgerMenuRef.current.className = 'navbar-hamburger-menu';
+      }
 
-  // const handleNavClick = (link) => {
-  //   setActiveLink(link);
-  // };
+      if(!elem.closest('.accounts-dropdown-button')) {
+        accountsDropdownRef.current.className = 'accounts-dropdown-button';
+        accountsLinksRef.current.className = 'accounts-dropdown-links';
+      }
+    };
 
-  // Set styling to show the hamburger menu on smaller screens.
+    window.addEventListener('click', handleCloseDropdowns);
+  }, []);
+
   const handleHamburgerMenuDisplay = () => {
     const navLinks = navbarLinksRef.current.className;
     const hamburgerIcon = hamburgerMenuRef.current.className;
@@ -56,6 +65,14 @@ const Navbar = () => {
       accountsLinksRef.current.className = 'accounts-dropdown-links';
     }
   };
+
+  // const handleCloseDropdown = (e) => {
+  //   if(!e.target.closest('.navbar-hamburger-menu')) {
+  //     console.log('doesnt match')
+  //     navbarLinksRef.current.className = 'navbar-links';
+  //     hamburgerMenuRef.current.className = 'navbar-hamburger-menu';
+  //   }
+  // };
 
   return (
     <>

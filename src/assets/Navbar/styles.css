@@ -81,6 +81,7 @@ a {
   cursor: pointer;
   background-color: black;
   padding: 17px;
+  z-index: 1;
 }
 .navbar-hamburger-menu:hover {
   background-color: grey;

@@ -1,0 +1,27 @@
+.category-header {
+    width: 100%;
+    height: 250px;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: 50% 60%;
+  }
+  
+  .category-header img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .category-navlinks {
+    position: absolute;
+    background-color: black;
+    padding: 1rem;
+    border-radius: 1rem;
+    top: 1rem;
+    left: 1rem;
+    color: white;
+  }
+  
+  .category-navlinks a {
+    color: white;
+  }
