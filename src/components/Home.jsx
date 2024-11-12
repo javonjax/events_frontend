@@ -1,8 +1,9 @@
 import '../assets/Home/styles.css';
+import Card from './Card';
 import { Link, useNavigate } from 'react-router-dom';
 import { LocationContext } from './LocationContext';
 import { useContext } from 'react';
-import { ImTicket } from "react-icons/im";
+import { ImTicket } from 'react-icons/im';
 
 const Home = () => {
   const { location, error, requestLocation } = useContext(LocationContext);
@@ -26,7 +27,7 @@ const Home = () => {
   return (
     <>
       <div className="homepage-header">
-        <h1>Welcome to <ImTicket/>Doozy</h1>
+        <h1>Welcome to <ImTicket />Doozy</h1>
         <h2>Pick a category and find something to do.</h2>
         <div className="homepage-header-media">
           <img src="/images/crowd.jpg" className=""></img>
@@ -46,14 +47,7 @@ const Home = () => {
       </div>
       <div className="homepage-body">
         {categories.map((category) => (
-          <Link
-            key={category}
-            className="homepage-card"
-            to={`/${category.toLowerCase()}`}
-          >
-            <img src={`/images/cards/${category.toLowerCase()}.jpg`}></img>
-            <h2>{category}</h2>
-          </Link>
+          <Card category={category}/>
         ))}
       </div>
     </>
