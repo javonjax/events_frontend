@@ -2,6 +2,7 @@ import '../assets/Home/styles.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { LocationContext } from './LocationContext';
 import { useContext } from 'react';
+import { ImTicket } from "react-icons/im";
 
 const Home = () => {
   const { location, error, requestLocation } = useContext(LocationContext);
@@ -25,7 +26,8 @@ const Home = () => {
   return (
     <>
       <div className="homepage-header">
-        <h1>Pick a category and find something to do.</h1>
+        <h1>Welcome to <ImTicket/>Doozy</h1>
+        <h2>Pick a category and find something to do.</h2>
         <div className="homepage-header-media">
           <img src="/images/crowd.jpg" className=""></img>
           <img src="/images/food.jpg"></img>
@@ -38,7 +40,7 @@ const Home = () => {
             to={'/local'}
             onClick={handleClick}
           >
-            Find local events.
+            Find events near you
           </Link>
         </div>
       </div>

@@ -9,8 +9,24 @@
   color: black;
   font-size: 2.5rem;
   margin: 0;
-  padding: 1rem;
+  padding: 0.5rem;
+  text-align: center;
   text-wrap: true;
+}
+
+.homepage-header h2 {
+  color: black;
+  font-size: 1.5rem;
+  margin: 0;
+  padding: 0.5rem;
+  text-align: center;
+  text-wrap: true;
+}
+
+.homepage-header svg {
+  height: 1.5rem;
+  padding: 0;
+  margin: 0;
 }
 
 .homepage-header img {
@@ -37,14 +53,14 @@
 
 .media-overlay-button {
   position: absolute;
-  background-color: bisque;
+  background-color: black;
   text-align: center;
   padding: 0.5rem;
   border-radius: 2rem;
   font-size: 0.9rem;
   bottom: 1rem;
   right: 1rem;
-  color: black;
+  color: white;
   width: 200px;
   cursor: pointer;
 }
@@ -100,8 +116,20 @@
 }
 
 @media screen and (max-width: 720px) {
-  .homepage-header h1 {
+  .homepage-header > h1 {
     font-size: 1.5rem;
+  }
+
+  .homepage-header svg {
+    height: 1rem;
+  }
+
+  .homepage-header > h2 {
+    font-size: 1rem;
+  }
+
+  .media-overlay-button {
+    width: 150px;
   }
 
   .media-text-overlay {
