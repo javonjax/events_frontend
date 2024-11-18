@@ -34,7 +34,7 @@ const EventList = ({ location }) => {
     }
 
     const eventData = await res.json();
-
+    console.log(eventData.length);
     return eventData;
   };
 

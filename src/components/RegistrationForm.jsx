@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import Input from './Input';
 
 const RegistrationForm = () => {
+  const REGISTRATION_API_URL = 'http://localhost:3000/api/register';
   const EMAIL_REGEX = /^[\w\-.]+@[a-zA-Z0-9\-]+\.[a-zA-Z]{2,}$/;
   const USERNAME_REGEX = /^[A-Za-z][A-z0-9-_]{3,23}$/;
   const PASSWORD_REGEX =
@@ -16,7 +17,17 @@ const RegistrationForm = () => {
     watch,
   } = useForm({ mode: 'onChange' });
 
-  const onSubmit = (e) => console.log(e.email);
+  const onSubmit = async (e) => {
+    console.log(e);
+    const data = await fetch(REGISTRATION_API_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(e)
+    });
+    console.log(data.json());
+  };
 
   // Watch the 'password' field to compare with the 'confirm password' field.
   const passwordInput = watch('password');

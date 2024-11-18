@@ -46,9 +46,11 @@ const Home = () => {
         </div>
       </div>
       <div className="homepage-body">
-        {categories.map((category) => (
-          <Card category={category}/>
-        ))}
+        <div className="cards-container">
+          {categories.map((category) => (
+            <Card category={category}/>
+          ))}
+        </div>
       </div>
     </>
   );

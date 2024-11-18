@@ -33,7 +33,7 @@ const App = () => {
           <LocationProvider>
             <div className="app">
               <Navbar />
-              <div className="app-body-content">
+              <main className="app-body-content">
                 <Routes>
                   <Route path="/" element={<Home />} />
                   {routes.map((route) => (
@@ -54,7 +54,7 @@ const App = () => {
                   <Route path="/signin" element={<SignInForm />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
-              </div>
+              </main>
               <Footer />
             </div>
           </LocationProvider>

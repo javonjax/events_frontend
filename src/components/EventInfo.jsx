@@ -1,5 +1,9 @@
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
+import { FaCalendar } from 'react-icons/fa';
+import { FaLocationDot } from 'react-icons/fa6';
+import { IoMdPricetag } from 'react-icons/io';
+import { ImTicket } from "react-icons/im";
 import '../assets/EventInfo/styles.css';
 
 // The event info API returns information about an event based on the id passed as a param.
@@ -35,57 +39,55 @@ const EventInfo = () => {
       <div className="event-info-header">
         <div className="header-text">
           <h1>{data?.name}</h1>
-
-          {/* Conditionally render header elements. */}
-
-          {data?.location && <h2>{data?.location}</h2>}
-
-          {data?.date && data?.time ? (
+          {data?.location && (
             <h2>
-              {data?.date} - {data?.time}
+              <FaLocationDot /> {data?.location}
             </h2>
-          ) : data?.date ? (
-            <h2>{data?.date}</h2>
-          ) : data?.time ? (
-            <h2>{data?.time}</h2>
-          ) : null}
+          )}
+          {data?.date && data?.time && (
+            <h2>
+              <FaCalendar /> {data?.date} - {data?.time}
+            </h2>
+          )}
 
           {data?.priceMin && data?.priceMax ? (
             data?.priceMin === data?.priceMax ? (
-              <h2>{data?.priceMin}</h2>
+              <h2>
+                <IoMdPricetag /> {data?.priceMin}
+              </h2>
             ) : (
               <h2>
-                {data?.priceMin} - {data?.priceMax}
+                <IoMdPricetag /> {data?.priceMin} - {data?.priceMax}
               </h2>
             )
           ) : data?.priceMin ? (
-            <h2>{data?.priceMin}</h2>
+            <h2>
+              <IoMdPricetag /> {data?.priceMin}
+            </h2>
           ) : data?.priceMax ? (
-            <h2>{data?.priceMax}</h2>
+            <h2>
+              <IoMdPricetag /> {data?.priceMax}
+            </h2>
           ) : null}
         </div>
         <div className="header-img">
-          {data?.image && <img src={data?.image}></img>}
+          {data?.image && <img src={data?.image} alt="Attraction Image"></img>}
         </div>
       </div>
-
       <div className="event-info-body">
+        {data?.info && <p className="event-description-text">{data?.info}</p>}
+        {data?.url && (
+          <a className="event-ticket-link" href={data?.url}>
+            <ImTicket />Get Tickets
+          </a>
+        )}
         {data?.seatmap && (
           <div className="seatmap">
             <h2>{data?.venue}</h2>
-            <img src={data?.seatmap} alt="Venue Seatmap"></img>
+            {data?.address && <p>{data.address}</p>}
+            {data?.seatmap && <img src={data?.seatmap} alt="Venue Seatmap"></img>}
           </div>
         )}
-
-        <div className="event-sales-content">
-          {data?.info && <p className="event-description-text">{data?.info}</p>}
-
-          {data?.url && (
-            <a className="event-ticket-link" href={data?.url}>
-              Get tickets
-            </a>
-          )}
-        </div>
       </div>
     </div>
   );

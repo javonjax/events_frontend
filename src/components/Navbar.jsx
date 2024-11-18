@@ -76,7 +76,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="navbar-container">
+      <nav className="navbar-container">
         <NavLink to="/" className="navbar-home">
           <FontAwesomeIcon icon={faHouse} />
         </NavLink>
@@ -123,7 +123,7 @@ const Navbar = () => {
             <NavLink to="/register">Register</NavLink>
           </div>
         </div>
-      </div>
+      </nav>
     </>
   );
 };

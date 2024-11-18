@@ -3,6 +3,7 @@ import { LocationContext } from './LocationContext';
 import { useState, useContext } from 'react';
 
 const CategoryContent = ({ route }) => {
+  
   const [useLocationData, setUseLocationData] = useState(false);
   const { location, error, requestLocation } = useContext(LocationContext);
 
@@ -34,6 +35,9 @@ const CategoryContent = ({ route }) => {
             </label>
           </>
         )}
+        <select>
+          <option>Show all</option>
+        </select>
       </div>
       <EventList
         location={
