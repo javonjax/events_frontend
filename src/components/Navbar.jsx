@@ -25,7 +25,9 @@ const Navbar = () => {
         if (navbarLinksRef.current) {
           navbarLinksRef.current.className = 'navbar-links';
         }
-        hamburgerMenuRef.current.className = 'navbar-hamburger-menu';
+        if (hamburgerMenuRef.current) {
+          hamburgerMenuRef.current.className = 'navbar-hamburger-menu';
+        }
       }
 
       if(!elem.closest('.accounts-dropdown-button')) {

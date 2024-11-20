@@ -29,7 +29,7 @@ const CategoryContent = ({ route }) => {
             ></input>
             <label
               htmlFor="location-checkbox"
-              style={{ 'margin-left': '0.5rem' }}
+              style={{ 'marginLeft': '0.5rem' }}
             >
               Search near your location
             </label>

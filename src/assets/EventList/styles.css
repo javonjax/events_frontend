@@ -7,3 +7,17 @@
 .events-pending {
   text-align: center;
 }
+
+.load-more-events {
+  cursor: pointer;
+  margin-right: 1rem;
+  text-align: center;
+  min-width: 70px;
+  color: white;
+  padding: 1rem;
+  font-size: 1rem;
+  background-color: black;
+  border-radius: 1rem;
+  margin: 1rem;
+  margin-top: 0;
+}

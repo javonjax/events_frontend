@@ -7,9 +7,7 @@ const CategoryHeader = () => {
   return (
     <div
       className="category-header"
-      style={{
-        backgroundImage: `url('/images/${route}_header.jpg')`,
-      }}
+      style={{backgroundImage: `url('/images/${route}_header.jpg')`,}}
     >
       <div className="category-navlinks">
         <Link to={'/'}>Home</Link>

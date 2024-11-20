@@ -48,7 +48,10 @@ const Home = () => {
       <div className="homepage-body">
         <div className="cards-container">
           {categories.map((category) => (
-            <Card category={category}/>
+            <Card 
+              key={`${category}-card`}
+              category={category}
+            />
           ))}
         </div>
       </div>
