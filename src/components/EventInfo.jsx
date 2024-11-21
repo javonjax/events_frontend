@@ -7,14 +7,14 @@ import { ImTicket } from "react-icons/im";
 import '../assets/EventInfo/styles.css';
 
 // The event info API returns information about an event based on the id passed as a param.
-const BACKEND_EVENT_INFO_API_URL = `http://localhost:3000/api/events`;
+const BACKEND_EVENT_INFO_API_URL = import.meta.env.VITE_BACKEND_EVENTS_API_URL;
 
 const EventInfo = () => {
   // Id is used as a dependency for the TanStack query and is passed to the backend API.
   const { route, id } = useParams();
 
   const fetchEvent = async () => {
-    const res = await fetch(`${BACKEND_EVENT_INFO_API_URL}/${id}`);
+    const res = await fetch(`${BACKEND_EVENT_INFO_API_URL}${id}`);
 
     if (!res.ok) {
       throw new Error(`${res.status}: ${res.statusText}`);

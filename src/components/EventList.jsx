@@ -4,7 +4,7 @@ import { keepPreviousData, useInfiniteQuery } from '@tanstack/react-query';
 import Event from './Event';
 import '../assets/EventList/styles.css';
 
-const BACKEND_EVENTS_API_URL = 'http://localhost:3000/api/events/';
+const BACKEND_EVENTS_API_URL = import.meta.env.VITE_BACKEND_EVENTS_API_URL;
 
 const EventList = ({ location }) => {
   // Route name is used as a dependency for the TanStack query.
@@ -27,9 +27,7 @@ const EventList = ({ location }) => {
   const fetchEvents = async ({ pageParam }) => {
     const today = new Date().toJSON();
     const todayDateString = today.slice(0, -5) + 'Z';
-    console.log(todayDateString);
-    console.log(pageParam)
-
+    
     // Construct query params.
     let queryParams = `sort=date,name,asc&startDateTime=${todayDateString}`;
 
@@ -77,6 +75,7 @@ const EventList = ({ location }) => {
     return eventData;
   };
 
+  // Tanstack query to fetch data.
   const { 
       data, 
       error, 
@@ -94,22 +93,23 @@ const EventList = ({ location }) => {
     refetchOnWindowFocus: false,
   });
 
+  // OnClick handler for the button that loads more events.
   const handleGetNextPage = async () => {
     if (!isFetching) {  
-      // If !hasMore the button is already disabled.
       const numAvailable = data?.pages.flatMap((page) => page.events).length;
       console.log('initial num available', numAvailable)
       if (numAvailable > numVisible + 10) {
-        // If we have more than enough events, display them and leave hasMore unchanged.
+        // If there are more than enough events, display them.
         setNumVisible(prev => prev + 10);
       } else if (numAvailable === numVisible + 10) {
-        // If we have exactly enough, display them and fetch more. hasMore will be set in the queryFn.
+        // If we have exactly enough, display them and fetch more.
         setNumVisible(prev => prev + 10);
         if (!isFetchingNextPage) {
           fetchNextPage();
         }
       } else {
-        // If we have less than enough, check if there is a next page, and await the results.
+        // If we have less than enough, check if there is a next page, and await the results
+        // before updating the list.
         if (hasNextPage) {
           if (!isFetchingNextPage) {
             await fetchNextPage();
@@ -134,6 +134,7 @@ const EventList = ({ location }) => {
     }
   }, [data, numVisible]);
 
+  // Fail safe to hide the button that shows more events when fetching the next page fails.
   useEffect(() => setHasMore(false), [isFetchNextPageError]);
 
   if (isLoading) {
@@ -141,7 +142,7 @@ const EventList = ({ location }) => {
   }
 
   if (error && !isFetchNextPageError) {
-    return <p id='initial-fetch-error'className="events-pending">No events found...</p>;
+    return <p id='initial-fetch-error' className="events-pending">No events found...</p>;
   }
 
   // Render an event component for each event returned from the backend API.
@@ -158,7 +159,7 @@ const EventList = ({ location }) => {
             ? "hidden" : "load-more-events"
           }
           onClick={handleGetNextPage} 
-        >Get more</button>
+        >See more</button>
       </div>
     </>
   );

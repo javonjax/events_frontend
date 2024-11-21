@@ -17,6 +17,7 @@
 }
 
 .homepage-card:hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     transform: perspective(500px) translateZ(20px) scale(1.05);
     box-shadow:
         rgba(0, 0, 0, 0.35) 0px 0px 65px,    

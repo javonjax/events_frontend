@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import Input from './Input';
 
 const RegistrationForm = () => {
-  const REGISTRATION_API_URL = 'http://localhost:3000/api/register';
+  const REGISTRATION_API_URL = import.meta.env.VITE_BACKEND_REGISTRATION_API_URL;
   const EMAIL_REGEX = /^[\w\-.]+@[a-zA-Z0-9\-]+\.[a-zA-Z]{2,}$/;
   const USERNAME_REGEX = /^[A-Za-z][A-z0-9-_]{3,23}$/;
   const PASSWORD_REGEX =
