@@ -41,51 +41,51 @@ const EventInfo = () => {
           <h1>{data?.name}</h1>
           {data?.location && (
             <h2>
-              <FaLocationDot /> {data?.location}
+              <FaLocationDot role="img" title="Location pin icon"/> {data?.location}
             </h2>
           )}
           {data?.date && data?.time && (
             <h2>
-              <FaCalendar /> {data?.date} - {data?.time}
+              <FaCalendar role="img" title="Calendar icon"/> {data?.date} - {data?.time}
             </h2>
           )}
 
           {data?.priceMin && data?.priceMax ? (
             data?.priceMin === data?.priceMax ? (
               <h2>
-                <IoMdPricetag /> {data?.priceMin}
+                <IoMdPricetag role="img" title="Price tag icon"/> {data?.priceMin}
               </h2>
             ) : (
               <h2>
-                <IoMdPricetag /> {data?.priceMin} - {data?.priceMax}
+                <IoMdPricetag role="img" title="Price tag icon"/> {data?.priceMin} - {data?.priceMax}
               </h2>
             )
           ) : data?.priceMin ? (
             <h2>
-              <IoMdPricetag /> {data?.priceMin}
+              <IoMdPricetag role="img" title="Price tag icon"/> {data?.priceMin}
             </h2>
           ) : data?.priceMax ? (
             <h2>
-              <IoMdPricetag /> {data?.priceMax}
+              <IoMdPricetag role="img" title="Price tag icon"/> {data?.priceMax}
             </h2>
           ) : null}
         </div>
         <div className="header-img">
-          {data?.image && <img src={data?.image} alt="Attraction Image"></img>}
+          {data?.image && <img src={data?.image} alt={`${data?.name || Attraction} Image`}></img>}
         </div>
       </div>
       <div className="event-info-body">
         {data?.info && <p className="event-description-text">{data?.info}</p>}
         {data?.url && (
           <a className="event-ticket-link" href={data?.url}>
-            <ImTicket />Get Tickets
+            <ImTicket role="img" title="Ticket icon"/>Get Tickets
           </a>
         )}
         {data?.seatmap && (
           <div className="seatmap">
             <h2>{data?.venue}</h2>
             {data?.address && <p>{data.address}</p>}
-            {data?.seatmap && <img src={data?.seatmap} alt="Venue Seatmap"></img>}
+            {data?.seatmap && <img src={data?.seatmap} alt={`${data?.venue || Venue} Seatmap`}></img>}
           </div>
         )}
       </div>

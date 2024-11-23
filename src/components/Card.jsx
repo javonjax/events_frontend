@@ -7,7 +7,9 @@ const Card = ({ category }) => {
         className="homepage-card"
         to={`/${category.toLowerCase()}`}
     >
-        <img src={`/images/cards/${category.toLowerCase()}.jpg`}></img>
+        <img 
+          src={`/images/cards/${category.toLowerCase()}.jpg`} 
+          alt={`${category || 'Category'} card`}></img>
         <h2>{category}</h2>
     </Link>
   );

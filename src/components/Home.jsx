@@ -27,15 +27,15 @@ const Home = () => {
   return (
     <>
       <div className="homepage-header">
-        <h1>Welcome to <ImTicket />Doozy</h1>
+        <h1>Welcome to <ImTicket role="img" title="Ticket icon"/>Doozy</h1>
         <h2>Pick a category and find something to do.</h2>
         <div className="homepage-header-media">
-          <img src="/images/crowd.jpg" className=""></img>
-          <img src="/images/food.jpg"></img>
-          <img src="/images/business.jpg"></img>
-          <img src="/images/sports.jpg"></img>
-          <img src="/images/bar.jpg"></img>
-          <img src="/images/theater.jpg"></img>
+          <img src="/images/crowd.jpg" alt="Concert crowd"></img>
+          <img src="/images/food.jpg" alt="Street market"></img>
+          <img src="/images/business.jpg" alt="Business seminar"></img>
+          <img src="/images/sports.jpg" alt="Kick boxing match"></img>
+          <img src="/images/bar.jpg" alt="Sports bar"></img>
+          <img src="/images/theater.jpg" alt="Outside a theatre"></img>
           <Link
             className="media-overlay-button"
             to={'/local'}
