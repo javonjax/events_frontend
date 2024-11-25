@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { LocationContext } from './LocationContext';
 import { useContext } from 'react';
 import { ImTicket } from 'react-icons/im';
+import { toast, Slide } from 'react-toastify';
 
 const Home = () => {
   const { location, error, requestLocation } = useContext(LocationContext);
@@ -19,7 +20,17 @@ const Home = () => {
       console.log(latitude, longitude);
       navigate('/local');
     } catch (error) {
-      alert('Location data must be provided to find local events!');
+      toast.error('Please enable location services to see local events.', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Slide,
+        });
       console.error('Error fetching location data:', error.message);
     }
   };

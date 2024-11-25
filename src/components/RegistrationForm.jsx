@@ -1,17 +1,21 @@
 import '../assets/RegistrationForm/styles.css';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { toast, Slide } from 'react-toastify';
 import Input from './Input';
 
 const RegistrationForm = () => {
   const REGISTRATION_API_URL = import.meta.env.VITE_BACKEND_REGISTRATION_API_URL;
+
   const EMAIL_REGEX = /^[\w\-.]+@[a-zA-Z0-9\-]+\.[a-zA-Z]{2,}$/;
   const USERNAME_REGEX = /^[A-Za-z][A-z0-9-_]{3,23}$/;
   const PASSWORD_REGEX =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
   const [registrationError, setRegistrationError] = useState('');
+
+  const navigate = useNavigate();
  
   const {
     register,
@@ -35,6 +39,20 @@ const RegistrationForm = () => {
       setRegistrationError(data.message);
     } else {
       setRegistrationError('');
+      
+      navigate('/signin');
+      toast.success('Account registered! You may now sign in.', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Slide,
+        style: {fontFamily: "Nunito, sans-serif"}
+        });
     }
   };
 

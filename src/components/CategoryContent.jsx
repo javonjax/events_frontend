@@ -1,6 +1,7 @@
 import EventList from './EventList';
 import { LocationContext } from './LocationContext';
 import { useState, useContext } from 'react';
+import { toast, Slide } from 'react-toastify';
 
 const CategoryContent = ({ route }) => {
   
@@ -14,7 +15,17 @@ const CategoryContent = ({ route }) => {
         await requestLocation();
       }
     } catch (error) {
-      console.log(error);
+      toast.error('Please enable location services to see local events.', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Slide,
+        });
       setUseLocationData(false);
     }
   };
