@@ -1,4 +1,5 @@
 import '../assets/RegistrationForm/styles.css';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { NavLink } from 'react-router-dom';
 import Input from './Input';
@@ -10,6 +11,8 @@ const RegistrationForm = () => {
   const PASSWORD_REGEX =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
+  const [registrationError, setRegistrationError] = useState('');
+ 
   const {
     register,
     formState: { errors, isValid },
@@ -18,15 +21,21 @@ const RegistrationForm = () => {
   } = useForm({ mode: 'onChange' });
 
   const onSubmit = async (e) => {
-    console.log(e);
-    const data = await fetch(REGISTRATION_API_URL, {
+    const res = await fetch(REGISTRATION_API_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(e)
     });
-    console.log(data.json());
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      setRegistrationError(data.message);
+    } else {
+      setRegistrationError('');
+    }
   };
 
   // Watch the 'password' field to compare with the 'confirm password' field.
@@ -85,7 +94,8 @@ const RegistrationForm = () => {
   return (
     <div className="registration-container">
       <div className="registration-form-container">
-        <header>Register</header>
+        <h1>Register</h1>
+        {registrationError && <p className="submission-error">{registrationError}</p>}
         <form className="registration-form" onSubmit={handleSubmit(onSubmit)}>
           <Input
             register={register}

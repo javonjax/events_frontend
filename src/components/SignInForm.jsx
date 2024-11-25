@@ -34,7 +34,7 @@ const SignInForm = () => {
   return (
     <div className="sign-in-container">
       <div className="sign-in-form-container">
-        <header>Sign In</header>
+        <h1>Sign In</h1>
         <form className="sign-in-form" onSubmit={handleSubmit(onSubmit)}>
           <Input
             register={register}

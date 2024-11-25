@@ -1,0 +1,14 @@
+.error-tooltip {
+    display: flex;
+    align-items: flex-start;
+    font-size: 12px;
+    min-height: 0.5rem;
+    margin-left: 4px;
+    margin-top: 4px;
+    margin-bottom: 8px;
+  }
+  
+  .error-tooltip > p {
+    margin: 0;
+    color: red;
+  }

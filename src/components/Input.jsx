@@ -1,3 +1,5 @@
+import '../assets/Input/styles.css';
+
 const Input = ({ register, name, label, options, errors }) => {
   const inputType = ['password', 'confirmPassword'].includes(name)
     ? 'password'
@@ -7,7 +9,7 @@ const Input = ({ register, name, label, options, errors }) => {
     <>
       <label>{label}:</label>
       <input type={inputType} {...register(name, options)} />
-      <div className="tooltip">{errors && <p>{errors.message}</p>}</div>
+      <div className="error-tooltip">{errors && <p>{errors.message}</p>}</div>
     </>
   );
 };

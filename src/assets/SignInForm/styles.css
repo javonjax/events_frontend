@@ -16,10 +16,16 @@
     padding: 1rem;
   }
   
-  .sign-in-form-container > header {
+  .sign-in-form-container > h1 {
     font-size: 2rem;
     font-weight: 500;
     margin-bottom: 1rem;
+  }
+
+  .submission-error {
+    margin: 0;
+    margin-bottom: 1rem;
+    color: red;
   }
   
   .sign-in-form {
@@ -72,40 +78,9 @@
     color: white;
   }
   
-  .input-requirements {
-    position: relative;
-    background-color: black;
-    border-radius: 0.5rem;
-  }
-  
-  .input-requirements > svg {
-    position: absolute;
-    right: 0.5rem;
-    top: 0.5rem;
-  }
-  
-  .input-requirements > p {
-    font-size: 0.75rem;
-    margin-left: 0.5rem;
-    margin-top: 0.5rem;
-  }
-  
   .hidden {
     display: none;
   }
   
-  .tooltip {
-    display: flex;
-    align-items: flex-start;
-    font-size: 12px;
-    min-height: 0.5rem;
-    margin-left: 4px;
-    margin-top: 4px;
-    margin-bottom: 8px;
-  }
-  
-  .tooltip > p {
-    margin: 0;
-    color: red;
-  }
+
   

@@ -5,15 +5,18 @@ import { useState, useContext } from 'react';
 const CategoryContent = ({ route }) => {
   
   const [useLocationData, setUseLocationData] = useState(false);
-  const { location, error, requestLocation } = useContext(LocationContext);
+  const { location, requestLocation } = useContext(LocationContext);
 
-  const onCheckBox = () => {
-    setUseLocationData((prev) => {
-      if (!prev && !location) {
-        requestLocation();
+  const onCheckBox = async () => {
+    try {
+      setUseLocationData((prev) => !prev);
+      if (!location) {
+        await requestLocation();
       }
-      return !prev;
-    });
+    } catch (error) {
+      console.log(error);
+      setUseLocationData(false);
+    }
   };
 
   return (
