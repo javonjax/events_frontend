@@ -39,12 +39,6 @@
   margin-bottom: 0.5rem;
 }
 
-.registration-form > input {
-  height: 2rem;
-  border-radius: 0.5rem;
-  z-index: 1; /* Helps prevent accidentally clicking the password manager pop ups in Firefox.*/
-}
-
 .registration-form > button {
   font-family: 'Nunito', sans-serif;
   padding: 0.5rem;

@@ -37,22 +37,11 @@ const RegistrationForm = () => {
 
     if (!res.ok) {
       setRegistrationError(data.message);
+      toast.error(data.message);
     } else {
       setRegistrationError('');
-      
       navigate('/signin');
-      toast.success('Account registered! You may now sign in.', {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-        transition: Slide,
-        style: {fontFamily: "Nunito, sans-serif"}
-        });
+      toast.success('Account registered! You may now sign in.');
     }
   };
 
@@ -120,28 +109,30 @@ const RegistrationForm = () => {
             name="email"
             label="Email address"
             options={emailValidation}
-            errors={errors.email}
+            validationError={errors.email}
+            submissionError={registrationError}
           />
           <Input
             register={register}
             name="username"
             label="Username"
             options={usernameValidation}
-            errors={errors.username}
+            validationError={errors.username}
+            submissionError={registrationError}
           />
           <Input
             register={register}
             name="password"
             label="Password"
             options={passwordValidation}
-            errors={errors.password}
+            validationError={errors.password}
           />
           <Input
             register={register}
             name="confirmPassword"
             label="Confirm password"
             options={confirmPasswordValidation}
-            errors={errors.confirmPassword}
+            validationError={errors.confirmPassword}
           />
           <button type="submit" disabled={!isValid}>
             Create account

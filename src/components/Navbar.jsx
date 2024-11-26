@@ -31,8 +31,12 @@ const Navbar = () => {
       }
 
       if(!elem.closest('.accounts-dropdown-button')) {
-        accountsDropdownRef.current.className = 'accounts-dropdown-button';
-        accountsLinksRef.current.className = 'accounts-dropdown-links';
+        if (accountsDropdownRef.current) {
+          accountsDropdownRef.current.className = 'accounts-dropdown-button';
+        }
+        if (accountsLinksRef.current) {
+          accountsLinksRef.current.className = 'accounts-dropdown-links';
+        }
       }
     };
 

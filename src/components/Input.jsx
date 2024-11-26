@@ -1,6 +1,6 @@
 import '../assets/Input/styles.css';
 
-const Input = ({ register, name, label, options, errors }) => {
+const Input = ({ register, name, label, options, validationError, submissionError=null }) => {
   const inputType = ['password', 'confirmPassword'].includes(name)
     ? 'password'
     : 'text';
@@ -8,8 +8,11 @@ const Input = ({ register, name, label, options, errors }) => {
   return (
     <>
       <label>{label}:</label>
-      <input type={inputType} {...register(name, options)} />
-      <div className="error-tooltip">{errors && <p>{errors.message}</p>}</div>
+      <input 
+        className={`form-input${submissionError?.includes(name) ? ' input-error' : ''}`}
+        type={inputType}  
+        {...register(name, options)} />
+      <div className="error-tooltip">{validationError && <p>{validationError.message}</p>}</div>
     </>
   );
 };
