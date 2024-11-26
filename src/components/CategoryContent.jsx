@@ -1,3 +1,4 @@
+import '../assets/CategoryContent/styles.css';
 import EventList from './EventList';
 import { LocationContext } from './LocationContext';
 import { useState, useContext } from 'react';
@@ -24,20 +25,19 @@ const CategoryContent = ({ route }) => {
     <>
       <div className="category-filters">
         {route.toLowerCase() !== 'local' && (
-          <>
+          <div className="use-location-checkbox">
             <input
               type="checkbox"
               id="location-checkbox"
               checked={useLocationData}
               onChange={onCheckBox}
-            ></input>
+            />
             <label
               htmlFor="location-checkbox"
-              style={{ 'marginLeft': '0.5rem' }}
             >
               Search near your location
             </label>
-          </>
+          </div>
         )}
         <select>
           <option>Show all</option>

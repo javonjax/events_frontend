@@ -38,8 +38,8 @@ const SignInForm = () => {
       navigate('/');
       toast.success(data.message);
     }
-    // TODO: put token in cookies
-    console.log(data.token)
+    // TODO: put token in cookie
+    console.log(data.token);
   };
 
   // Validation options for react-hook-forms.

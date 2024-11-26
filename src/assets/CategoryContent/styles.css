@@ -1,0 +1,17 @@
+.category-filters {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+  
+.use-location-checkbox {
+    margin-bottom: 1rem;
+}
+
+.use-location-checkbox > label {
+    margin-left: 0.25rem;
+}
