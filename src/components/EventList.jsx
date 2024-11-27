@@ -1,25 +1,17 @@
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 import { keepPreviousData, useInfiniteQuery } from '@tanstack/react-query';
 import Event from './Event';
 import '../assets/EventList/styles.css';
 
 const BACKEND_EVENTS_API_URL = import.meta.env.VITE_BACKEND_EVENTS_API_URL;
 
-const EventList = ({ location }) => {
-  // Route name is used as a dependency for the TanStack query.
-  let route = useLocation().pathname.slice(1);
-
+const EventList = ({ route, selectedGenre, location }) => {
   // List of event objects visible on the page.
   const [visibleEvents, setVisibleEvents] = useState([]); 
   // Number of visible events.
   const [numVisible, setNumVisible] = useState(null);  
   // Tracks if there are more events available to display from the current data.
   const [hasMore, setHasMore] = useState(null);
-  // Tracks the next page of data to fetch from the API.
-  const [page, setPage] = useState(0);
-  // For handling errors with fetchNextPage.
-  const [nextPageError, setNextPageError] = useState(null);
   // The Ticketmaster API only supports retrieving up to the 1000th item (max 200 items per page, the 5th page is the last).
   const MAX_PAGES = 4; 
 
@@ -27,13 +19,17 @@ const EventList = ({ location }) => {
   const fetchEvents = async ({ pageParam }) => {
     const today = new Date().toJSON();
     const todayDateString = today.slice(0, -5) + 'Z';
-    
+    console.log(todayDateString, "date string")
     // Construct query params.
     let queryParams = `sort=date,name,asc&startDateTime=${todayDateString}`;
 
     const classifications = ['music', 'sports', 'food', 'family', 'arts'];
     if (classifications.includes(route)) {
       queryParams += `&classificationName=${route}`;
+    }
+
+    if (selectedGenre) {
+      queryParams += `&genreId=${selectedGenre}`;
     }
 
     if (location) {
@@ -86,11 +82,12 @@ const EventList = ({ location }) => {
       isFetchingNextPage,
       isFetchNextPageError 
     } = useInfiniteQuery({
-    queryKey: ['fetchEvents', route, location],
+    queryKey: ['fetchEvents', route, selectedGenre, location],
     queryFn: fetchEvents,
     initialPageParam: 0,
     getNextPageParam: (lastPage, pages) => lastPage.nextPage,
     refetchOnWindowFocus: false,
+    retry: 1
   });
 
   // OnClick handler for the button that loads more events.

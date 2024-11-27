@@ -7,11 +7,19 @@
     margin-top: 2rem;
     margin-bottom: 2rem;
 }
-  
-.use-location-checkbox {
-    margin-bottom: 1rem;
-}
 
 .use-location-checkbox > label {
     margin-left: 0.25rem;
+}
+
+.filter-dropdowns-container {
+    display: flex;
+    justify-content: center;
+    width: 40%;
+    margin-bottom: 1rem;
+}
+
+.filter-dropdown > label {
+    margin-right: 0.25rem;
+    margin-left: 1rem;
 }
